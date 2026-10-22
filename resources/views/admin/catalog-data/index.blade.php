@@ -1,0 +1,16 @@
+@extends('layouts.app')
+
+@section('title', 'Authors and categories')
+
+@section('content')
+<section class="page-heading"><span class="eyebrow">Catalog setup</span><h1>Authors & <em>categories.</em></h1><p>Manage the names that organize and describe your collection. Existing catalog records stay connected when a name is updated.</p></section>
+<section class="metadata-grid row g-3 g-xl-4">
+    <div class="panel card metadata-panel col-12 col-lg-6 p-3 p-md-4"><div class="panel-heading"><span class="eyebrow">Subjects</span><h2>Categories</h2><p>Group books into browseable subjects.</p></div><form class="metadata-add d-flex align-items-end gap-3" method="POST" action="{{ route('admin.categories.store') }}">@csrf<label class="field flex-grow-1 mb-0"><span>New category</span><input name="name" placeholder="e.g. History" maxlength="100" required class="form-control"></label><button class="btn btn-success button button-dark button-small" type="submit">Add <span>＋</span></button></form>
+        @if($categories->isEmpty())<div class="empty-inline">No categories have been added.</div>@else<div class="metadata-list d-flex flex-column mt-3">@foreach($categories as $category)<form class="metadata-row d-flex align-items-center gap-3 py-2 border-bottom" method="POST" action="{{ route('admin.categories.update', $category) }}">@csrf @method('PUT')<label class="flex-grow-1 mb-0"><span class="sr-only">Category name</span><input name="name" value="{{ $category->name }}" maxlength="100" required class="form-control"></label><span class="metadata-count badge bg-light text-secondary fw-normal">{{ $category->books_count }} books</span><button class="btn btn-outline-success button button-outline button-small" type="submit">Save</button></form>@endforeach</div>@endif
+    </div>
+    <div class="panel card metadata-panel col-12 col-lg-6 p-3 p-md-4"><div class="panel-heading"><span class="eyebrow">Byline</span><h2>Authors</h2><p>Keep author names consistent across book records.</p></div><form class="metadata-add d-flex align-items-end gap-3" method="POST" action="{{ route('admin.authors.store') }}">@csrf<label class="field flex-grow-1 mb-0"><span>New author</span><input name="name" placeholder="Author full name" maxlength="255" required class="form-control"></label><button class="btn btn-success button button-dark button-small" type="submit">Add <span>＋</span></button></form>
+        @if($authors->isEmpty())<div class="empty-inline">Authors are added when you catalog a book.</div>@else<div class="metadata-list d-flex flex-column mt-3">@foreach($authors as $author)<form class="metadata-row d-flex align-items-center gap-3 py-2 border-bottom" method="POST" action="{{ route('admin.authors.update', $author) }}">@csrf @method('PUT')<label class="flex-grow-1 mb-0"><span class="sr-only">Author name</span><input name="name" value="{{ $author->name }}" maxlength="255" required class="form-control"></label><span class="metadata-count badge bg-light text-secondary fw-normal">{{ $author->books_count }} books</span><button class="btn btn-outline-success button button-outline button-small" type="submit">Save</button></form>@endforeach</div>@endif
+    </div>
+</section>
+<p class="account-note">Names can be edited here; records are retained to protect catalog and loan history.</p>
+@endsection

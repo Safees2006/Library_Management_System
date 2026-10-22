@@ -1,0 +1,27 @@
+.book-cover-with-image { background: #382a23; }
+.book-cover-with-image::before { display: none; }
+.book-cover-with-image::after { z-index: 1; inset: 0; width: auto; height: auto; border: 0; border-radius: inherit; background: linear-gradient(0deg, rgba(28, 21, 17, .78), rgba(28, 21, 17, 0) 68%); }
+.book-cover-photo { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.book-cover-with-image .cover-spark { z-index: 2; }
+.book-cover-with-image .cover-title, .book-cover-with-image .cover-rule, .book-cover-with-image .cover-author { position: relative; z-index: 2; text-shadow: 0 1px 5px rgba(0, 0, 0, .45); }
+.book-cover-with-image .cover-title { color: #fffaf1; }
+.detail-cover.book-cover-with-image { min-height: 490px; }
+
+.cover-upload-field > label { display: block; margin-bottom: 8px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.cover-upload-row { display: flex; align-items: center; gap: 18px; }
+.cover-upload-preview { width: 94px; height: 137px; flex: none; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: #f1e8db; box-shadow: 0 5px 16px rgba(55, 37, 25, .1); }
+.cover-upload-preview[hidden] { display: none; }
+.cover-upload-preview img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cover-upload-control { min-width: 0; }
+.cover-upload-control input { max-width: 100%; }
+.cover-upload-control small { display: block; max-width: 470px; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.5; }
+
+.scene-book { isolation: isolate; }
+.scene-book-photo { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scene-book strong, .scene-book small, .scene-book-ornament { position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(20, 15, 12, .55); }
+.scene-book-tone-3 strong, .scene-book-tone-3 small, .scene-book-tone-3 .scene-book-ornament { text-shadow: 0 1px 4px rgba(255, 244, 219, .8); }
+
+@media (max-width: 520px) {
+    .cover-upload-row { align-items: flex-start; flex-direction: column; }
+    .cover-upload-control input { font-size: 11px; }
+}
