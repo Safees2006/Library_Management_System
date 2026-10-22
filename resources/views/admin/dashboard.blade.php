@@ -7,19 +7,19 @@
     <section class="library-metric-grid" aria-label="Library overview">
         <a class="library-metric-card" href="{{ route('admin.books.index') }}">
             <span class="library-metric-copy"><small>COLLECTION TITLES</small><strong data-count-target="{{ $stats['titles'] }}">{{ number_format($stats['titles']) }}</strong><em>{{ number_format($stats['copies']) }} physical copies</em></span>
-            <span class="library-metric-icon metric-icon-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h11.8A2.2 2.2 0 0 1 19 6.7V20H7a2 2 0 0 1-2-2V4.5Z"/><path d="M5 17.5c0-1.1.9-2 2-2h12M9 8h6M9 11h6"/></svg></span>
+            <span class="library-metric-icon metric-icon-green" aria-hidden="true"><i class="bi bi-book"></i></span>
         </a>
         <a class="library-metric-card" href="{{ route('admin.books.index') }}">
             <span class="library-metric-copy"><small>AVAILABLE COPIES</small><strong data-count-target="{{ $stats['available'] }}">{{ number_format($stats['available']) }}</strong><em>{{ number_format($stats['low_stock']) }} titles running low</em></span>
-            <span class="library-metric-icon metric-icon-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4.2 4.2L19 6.5"/><path d="M20 12a8 8 0 1 1-2.3-5.6"/></svg></span>
+            <span class="library-metric-icon metric-icon-blue" aria-hidden="true"><i class="bi bi-check-circle"></i></span>
         </a>
         <a class="library-metric-card" href="{{ route('admin.members.index') }}">
             <span class="library-metric-copy"><small>REGISTERED MEMBERS</small><strong data-count-target="{{ $stats['members'] }}">{{ number_format($stats['members']) }}</strong><em>Active library accounts</em></span>
-            <span class="library-metric-icon metric-icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.4A4.6 4.6 0 0 1 8.1 13h1.8a4.6 4.6 0 0 1 4.6 4.6V19ZM16 5.5a3 3 0 0 1 0 5.8M17 13.2a4.4 4.4 0 0 1 3.5 4.3V19h-3"/></svg></span>
+            <span class="library-metric-icon metric-icon-violet" aria-hidden="true"><i class="bi bi-people"></i></span>
         </a>
         <a class="library-metric-card" href="{{ route('admin.loans.index', ['status' => 'active']) }}">
             <span class="library-metric-copy"><small>BOOKS ON LOAN</small><strong data-count-target="{{ $stats['active_loans'] }}">{{ number_format($stats['active_loans']) }}</strong><em>{{ number_format($stats['overdue']) }} currently overdue</em></span>
-            <span class="library-metric-icon metric-icon-rose" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5h13.5A2.5 2.5 0 0 1 20 8v11H6a2 2 0 0 1-2-2V5.5Z"/><path d="M4 16.5h16M8 9h8M8 12h5"/></svg></span>
+            <span class="library-metric-icon metric-icon-rose" aria-hidden="true"><i class="bi bi-journal-arrow-up"></i></span>
         </a>
     </section>
 
@@ -56,7 +56,7 @@
 
     <section class="dashboard-lower-grid row g-3" aria-label="Recent loans and quick actions">
         <div class="admin-panel card recent-loans-panel col-12 col-xl-8">
-            <div class="admin-panel-heading"><div><span class="admin-section-kicker">LATEST ACTIVITY</span><h2>Recent loans</h2></div><a class="admin-panel-link" href="{{ route('admin.loans.index') }}">View all <span aria-hidden="true">&rarr;</span></a></div>
+            <div class="admin-panel-heading"><div><span class="admin-section-kicker">LATEST ACTIVITY</span><h2>Recent loans</h2></div><a class="admin-panel-link" href="{{ route('admin.loans.index') }}">View all <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
             @if ($recentLoans->isEmpty())
                 <div class="empty-inline">No loans have been recorded yet.</div>
             @else
@@ -78,10 +78,10 @@
 
         <aside class="admin-panel card dashboard-quick-panel col-12 col-xl-4">
             <div class="admin-panel-heading"><div><span class="admin-section-kicker">SHORTCUTS</span><h2>Quick actions</h2></div></div>
-            <a class="dashboard-quick-action" href="{{ route('admin.loans.create') }}"><span class="quick-action-mark">+</span><span><strong>Issue a book</strong><small>Check out a copy to a member</small></span><b aria-hidden="true">&rarr;</b></a>
-            <a class="dashboard-quick-action" href="{{ route('admin.books.create') }}"><span class="quick-action-mark">+</span><span><strong>Add a book</strong><small>Update the library collection</small></span><b aria-hidden="true">&rarr;</b></a>
-            <a class="dashboard-quick-action" href="{{ route('admin.members.create') }}"><span class="quick-action-mark">+</span><span><strong>Register a member</strong><small>Create a library account</small></span><b aria-hidden="true">&rarr;</b></a>
-            <a class="dashboard-quick-action" href="{{ route('admin.fines.index') }}"><span class="quick-action-mark">&#163;</span><span><strong>Review fine balances</strong><small>{{ config('library.currency') }} {{ number_format($stats['outstanding_fines'], 0) }} outstanding</small></span><b aria-hidden="true">&rarr;</b></a>
+            <a class="dashboard-quick-action" href="{{ route('admin.loans.create') }}"><span class="quick-action-mark"><i class="bi bi-journal-arrow-up" aria-hidden="true"></i></span><span><strong>Issue a book</strong><small>Check out a copy to a member</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            <a class="dashboard-quick-action" href="{{ route('admin.books.create') }}"><span class="quick-action-mark"><i class="bi bi-journal-plus" aria-hidden="true"></i></span><span><strong>Add a book</strong><small>Update the library collection</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            <a class="dashboard-quick-action" href="{{ route('admin.members.create') }}"><span class="quick-action-mark"><i class="bi bi-person-plus" aria-hidden="true"></i></span><span><strong>Register a member</strong><small>Create a library account</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            <a class="dashboard-quick-action" href="{{ route('admin.fines.index') }}"><span class="quick-action-mark"><i class="bi bi-cash-coin" aria-hidden="true"></i></span><span><strong>Review fine balances</strong><small>{{ config('library.currency') }} {{ number_format($stats['outstanding_fines'], 0) }} outstanding</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
         </aside>
     </section>
 </div>

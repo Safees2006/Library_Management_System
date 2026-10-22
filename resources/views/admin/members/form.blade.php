@@ -16,6 +16,6 @@
         <label class="field col-12 col-md-6"><span>{{ $isEditing ? 'New password' : 'Temporary password' }} @if(!$isEditing)<b>*</b>@endif</span><input type="password" name="password" autocomplete="new-password" {{ $isEditing ? '' : 'required' }} minlength="8" class="form-control"><small>{{ $isEditing ? 'Leave blank to keep the current password.' : 'At least 8 characters.' }}</small></label>
         <label class="field col-12 col-md-6"><span>Confirm password @if(!$isEditing)<b>*</b>@endif</span><input type="password" name="password_confirmation" autocomplete="new-password" {{ $isEditing ? '' : 'required' }} class="form-control"></label>
     </div>
-    <div class="form-actions"><a class="btn button button-quiet" href="{{ route('admin.members.index') }}">Cancel</a><button class="btn btn-success button button-dark" type="submit">{{ $isEditing ? 'Save member' : 'Create member account' }} <span>→</span></button></div>
+    <div class="form-actions"><a class="btn button button-quiet" href="{{ route('admin.members.index') }}">Cancel</a><button class="btn btn-success button button-dark" type="submit">{{ $isEditing ? 'Save member' : 'Create member account' }} <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
 </form>
 @endsection

@@ -175,8 +175,7 @@ table tbody tr:last-child td { border-bottom: 0; }
 }
 
 .form-fields.row,
-.book-grid.row,
-.dashboard-lower-grid.row {
+.book-grid.row {
     display: flex;
     gap: 0;
 }
@@ -189,8 +188,25 @@ table tbody tr:last-child td { border-bottom: 0; }
     width: auto;
 }
 
+.dashboard-lower-grid.row {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-right: 0;
+    margin-left: 0;
+}
+
 .dashboard-lower-grid.row > .admin-panel {
+    width: auto;
+    max-width: none;
     height: auto;
+    padding: 24px 26px;
+}
+
+@media (max-width: 1180px) {
+    .dashboard-lower-grid.row {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
 
 @media (max-width: 767px) {
@@ -218,6 +234,12 @@ table tbody tr:last-child td { border-bottom: 0; }
 .metadata-panel { min-width: 0; }
 .metadata-row label { min-width: 0; }
 .metadata-count { white-space: nowrap; }
+.metadata-grid.row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-right: 0; margin-left: 0; }
+.metadata-grid.row > .metadata-panel { width: auto; max-width: none; }
+
+@media (max-width: 991px) {
+    .metadata-grid.row { grid-template-columns: minmax(0, 1fr); }
+}
 
 @media (max-width: 575px) {
     .metadata-add { flex-wrap: wrap; }
@@ -400,6 +422,35 @@ h1, h2, h3 { color: #eaf0fa; }
 .bg-light { background-color: #1b2a42 !important; }
 .text-secondary { color: #b5c3d7 !important; }
 
+/* Bootstrap Icons are bundled locally for consistent UI icons on every page. */
+.bi { vertical-align: -.125em; }
+.button > .bi { font-size: 1.1em; line-height: 1; }
+.inline-search > .bi { flex: none; font-size: 15px; line-height: 1; }
+.empty-icon > .bi { font-size: 22px; line-height: 1; }
+.pagination-wrap .pagination-disabled, .pagination-wrap .pagination-ellipsis { display: grid; min-width: 36px; height: 36px; place-items: center; padding: 0 10px; border: 1px solid #34445e; border-radius: 4px; background: #111b2d; color: #cbd7e7; }
+.pagination-wrap .pagination-disabled { opacity: .45; }
+.pagination-wrap .pagination-disabled .bi { font-size: 13px; }
+
+/* Rounded outer frame around each page workspace. */
+.admin-layout { height: 100vh; min-height: 100vh; gap: 0; padding: 12px; }
+.admin-main { height: calc(100vh - 24px); min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+.admin-page-shell { min-height: calc(100vh - 98px); }
+.admin-sidebar { inset: 12px auto 12px 12px; border-radius: 28px 0 0 28px; }
+.admin-main { margin: 0 0 0 270px; border: 1px solid rgba(148, 167, 194, .24); border-radius: 0 28px 28px 0; background: rgba(8, 14, 25, .3); }
+.admin-layout.sidebar-collapsed .admin-main { margin-left: 82px; }
+.admin-topbar { border-radius: 0 27px 0 0; }
+.page-shell { margin: 16px auto; border: 1px solid rgba(148, 167, 194, .24); border-radius: 28px; background: rgba(8, 14, 25, .3); box-shadow: 0 14px 38px rgba(0, 0, 0, .18); }
+
 @media (max-width: 767px) {
     .main-nav.collapse { border-color: #2b3950; background: rgba(8, 14, 25, .97); }
+}
+
+@media (max-width: 760px) {
+    .admin-layout { height: 100vh; min-height: 100vh; gap: 0; padding: 8px; }
+    .admin-layout .admin-main, .admin-layout.sidebar-collapsed .admin-main { height: calc(100vh - 16px); min-height: 0; overflow-y: auto; }
+    .admin-page-shell { min-height: calc(100vh - 82px); }
+    .admin-sidebar { inset: 8px auto 8px 8px; border-radius: 24px; }
+    .admin-layout .admin-main, .admin-layout.sidebar-collapsed .admin-main { margin: 0; border-radius: 24px; }
+    .admin-topbar { border-radius: 23px 23px 0 0; }
+    .page-shell { margin: 12px auto; border-radius: 24px; }
 }

@@ -32,6 +32,6 @@
         @if($isEditing)<div class="field field-wide col-12 stock-summary"><span>Current stock</span><strong>{{ $book->copies()->where('status', 'available')->count() }} available of {{ $book->copies()->count() }} total</strong><small>Existing copy records are preserved. Add new barcodes below as needed.</small></div>@endif
         <label class="field field-wide col-12"><span>{{ $isEditing ? 'Add more copy barcodes' : 'Copy barcodes' }} @if(!$isEditing)<b>*</b>@endif</span><textarea class="form-control" name="copy_barcodes" rows="4" placeholder="RR-000101&#10;RR-000102">{{ old('copy_barcodes') }}</textarea><small>One barcode per line. {{ $isEditing ? 'Leave blank if no copies are being added.' : 'At least one barcode is required.' }}</small></label>
     </div></div>
-    <div class="form-actions"><a class="btn button button-quiet" href="{{ route('admin.books.index') }}">Cancel</a><button class="btn btn-success button button-dark" type="submit">{{ $isEditing ? 'Save changes' : 'Add book to catalog' }} <span>→</span></button></div>
+    <div class="form-actions"><a class="btn button button-quiet" href="{{ route('admin.books.index') }}">Cancel</a><button class="btn btn-success button button-dark" type="submit">{{ $isEditing ? 'Save changes' : 'Add book to catalog' }} <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
 </form>
 @endsection

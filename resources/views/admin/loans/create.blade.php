@@ -15,6 +15,6 @@
         <label class="field col-12 col-md-6"><span>Due date <b>*</b></span><input type="date" name="due_date" value="{{ old('due_date', $dueDate) }}" required class="form-control"><small>Default loan period: {{ config('library.loan_duration_days') }} days.</small></label>
     </div>
     <div class="form-note note-box">Borrowing limit: {{ config('library.borrowing_limit') }} active loans per member. Daily overdue fine: {{ config('library.currency') }} {{ number_format(config('library.fine_rate_per_day'), 2) }}.</div>
-    <div class="form-actions"><a class="btn button button-quiet" href="{{ route('admin.loans.index') }}">Cancel</a><button class="btn btn-success button button-dark" type="submit" @disabled($members->isEmpty() || $books->isEmpty())>Confirm checkout <span>→</span></button></div>
+    <div class="form-actions"><a class="btn button button-quiet" href="{{ route('admin.loans.index') }}">Cancel</a><button class="btn btn-success button button-dark" type="submit" @disabled($members->isEmpty() || $books->isEmpty())>Confirm checkout <i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
 </form>
 @endsection
